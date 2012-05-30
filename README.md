@@ -12,7 +12,7 @@ Yii jsTree Widget
 	* [Зарузить](https://github.com/smaknsk/yii-jstree-widget/tags) последнюю версию и 
 	  разместить её в папке `extensions/yii-jstree-widget`
 	* Добавить этот репозиторий как git submodule в ваш репозиторий командой
-	  `git submodule add https://smaknsk@github.com/smaknsk/yii-jstree-widget.git extensions/yii-jstree-widget`
+	  `git submodule add https://github.com/smaknsk/yii-jstree-widget.git extensions/yii-jstree-widget`
 
 2. Вывод дерева через Ajax
 
@@ -22,7 +22,7 @@ Yii jsTree Widget
 <?php 
 	$this->widget("ext.yii-jstree-widget.JSTreeWidget", array(
 		'settings' => array(
-				'plugins' => array('themes', 'json', 'checkbox'),
+				'plugins' => array('themes', 'json'),
 				'json' => array(
 					'ajax' => array(
 						'url' => '/admin/category/getnode',
@@ -30,12 +30,10 @@ Yii jsTree Widget
 					)
 				)
 			)
-		),
-		'model' => $model
+		)
 	));
 ?>
 ~~~
-$model - модель в которой вы храните своё дерево.
 В настройках плагина надо указать путь к вашему контроллеру.
 
 Далее в контроллере который вы указали в json.ajax.url прописываем дополнительные action.
