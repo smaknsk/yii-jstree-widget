@@ -1,0 +1,3 @@
+[submodule "jstree"]
+	path = jstree
+	url = git://github.com/smaknsk/jstree.git
