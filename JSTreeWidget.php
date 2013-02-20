@@ -28,8 +28,8 @@ class JSTreeWidget extends CInputWidget
 	
 	public function run()
 	{
-		$html = CHTML::openTag("div", array("id" => $this->htmlOptions['id']));
-		$html .= CHTML::closeTag("div");
+		$html = CHtml::openTag("div", array("id" => $this->htmlOptions['id']));
+		$html .= CHtml::closeTag("div");
 		echo $html;
 	}
 }
