@@ -1,23 +1,16 @@
 Yii jsTree Widget
 =================
 
-Данный виджет позволяет работать с jQuery плагином [jsTree](https://github.com/vakata/jstree) немного удобнее.
+This is a widget wrapper for jQuery plugin [jsTree](https://github.com/vakata/jstree).
 
-## Требования
-* Модель должна иметь поведение [Nested Set](https://github.com/yiiext/nested-set-behavior)
+Your model *must* have the [Nested Set](https://github.com/yiiext/nested-set-behavior) behaviour.
 
-## Установка и настройка
+## Configuration
 
-1. Получить код можно следующими способами:
-	* [Зарузить](https://github.com/smaknsk/yii-jstree-widget/tags) последнюю версию и 
-	  разместить её в папке `extensions/yii-jstree-widget`
-	* Добавить этот репозиторий как git submodule в ваш репозиторий командой
-	  `git submodule add https://github.com/smaknsk/yii-jstree-widget.git extensions/yii-jstree-widget`
+There are number of ways to print a tree using jsTree, but we're going to do it using simple AJAX way.
 
-2. Вывод дерева через Ajax
+First, insert the widget:
 
-Для вывода дерева в jsTree существует несколько способов. Рассмотрим вывод через ajax.
-В шаблоне подключим видджет:
 ~~~php
 <?php 
 	$this->widget("ext.yii-jstree-widget.JSTreeWidget", array(
@@ -34,10 +27,10 @@ Yii jsTree Widget
 	));
 ?>
 ~~~
-В настройках плагина надо указать путь к вашему контроллеру.
+`json.ajax.url` is the url to your contoller, obviously.
 
-Далее в контроллере который вы указали в json.ajax.url прописываем дополнительные action.
-У казываем в свойстве modelClassName модель с которой будет работать action getnode.
+Then you'll need the controller action. You should set `$modelClassName` to your tree model class name.
+
 ~~~php
 public $modelClassName = 'Category';
 	
@@ -50,7 +43,7 @@ public function actions()
 
 ~~~
 
-И наконец в модели $modelClassName нужно подключить поведение JSTreeAjaxBehavior
+And don't forget to turn on JSTreeAjaxBehavior model behaviour.
 ~~~php
 public function behaviors()
 {
@@ -69,3 +62,8 @@ public function behaviors()
 	);
 }
 ~~~
+
+That's all for displaying the trees.
+
+##Word of advice
+jsTree is picky about most of its events: they *must* be binded before the instance initialization. Currently there's no way to bind them without breaking the widget abstraction.
