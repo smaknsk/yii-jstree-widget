@@ -65,5 +65,11 @@ public function behaviors()
 
 That's all for displaying the trees.
 
-##Word of advice
-jsTree is picky about most of its events: they *must* be binded before the instance initialization. Currently there's no way to bind them without breaking the widget abstraction.
+##Events
+jsTree is picky about some of its events (especially `before.jstree`), so now you can set them in your widget too! Here's the excerpt from widget data array:
+~~~php
+'events' => array(
+	'before.jstree' => 'console.log("Timber!");',
+),
+~~~
+`events` is a simple array of `event_name => event_function`. You don't need to wrap the function in `js:` prefix and `function()` code, it's done already. Just write the callback.
