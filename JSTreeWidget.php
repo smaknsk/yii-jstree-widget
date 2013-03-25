@@ -8,6 +8,7 @@ class JSTreeWidget extends CInputWidget
 	public $htmlOptions;
 	
 	public $settings = array('themes');
+	public $events = array();
 	
 	public function init()
 	{
@@ -22,14 +23,19 @@ class JSTreeWidget extends CInputWidget
 		$cs->registerCoreScript('jquery');
 		$cs->registerScriptFile($assets . '/jstree.min.js');
 		
-		$js = '$("#' . $id . '").jstree(' . CJavaScript::encode($this->settings) . ');';
+		$js = '$("#' . $id . '")';
+		foreach($this->events as $name => $event)
+		{
+			$js = $js . '.on("'.$name.'", function(event){'.$event.'})';
+		}
+		$js = $js . '.jstree(' . CJavaScript::encode($this->settings) . ');';
 		$cs->registerScript('Yii.' . get_class($this) . '#' . $id, $js);
 	}
 	
 	public function run()
 	{
-		$html = CHTML::openTag("div", array("id" => $this->htmlOptions['id']));
-		$html .= CHTML::closeTag("div");
+		$html = CHtml::openTag("div", array("id" => $this->htmlOptions['id']));
+		$html .= CHtml::closeTag("div");
 		echo $html;
 	}
 }
