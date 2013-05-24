@@ -1,7 +1,7 @@
 Yii jsTree Widget
 =================
 
-Данный виджет позволяет работать с jQuery плагином [jsTree](https://github.com/vakata/jstree) немного удобнее.
+Данный виджет является обёрткой для jQuery плагина [jsTree](https://github.com/vakata/jstree).
 
 ## Требования
 * Модель должна иметь поведение [Nested Set](https://github.com/yiiext/nested-set-behavior)
@@ -11,7 +11,7 @@ Yii jsTree Widget
 1. Получить код можно следующими способами:
 	* [Зарузить](https://github.com/smaknsk/yii-jstree-widget/tags) последнюю версию и 
 	  разместить её в папке `extensions/yii-jstree-widget`
-	* Добавить этот репозиторий как git submodule в ваш репозиторий командой
+	* Добавить этот репозиторий как git submodule в ваш репозиторий
 	  `git submodule add https://github.com/smaknsk/yii-jstree-widget.git extensions/yii-jstree-widget`
 
 2. Вывод дерева через Ajax
